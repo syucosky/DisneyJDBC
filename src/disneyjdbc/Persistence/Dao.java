@@ -9,17 +9,17 @@ import java.sql.Statement;
 public abstract class Dao {
     protected Connection conn = null;
     protected Statement stmt = null;
-    protected ResultSet result = null;
+    protected ResultSet resultado = null;
     
     private final String USER = "root";
     private final String PASS = "root";
-    private final String nameDB = "disneyjdbc";
+    private final String NAMEBD = "disneyjdbc";
     private final String DRIVER = "com.mysql.jdbc.Driver";
     
     public void coneccion() throws SQLException , ClassNotFoundException{
         try {
             Class.forName(DRIVER);
-            String url = "jdbc:mysql://localhost:3306/disneyjdbc";
+            String url = "jdbc:mysql://localhost:3306/"+NAMEBD+"?useSSL=false";
             conn = DriverManager.getConnection(url, USER, PASS);
             
         } catch(SQLException | ClassNotFoundException ex) {
@@ -34,8 +34,8 @@ public abstract class Dao {
             if(stmt != null){
                 stmt.close();
             }
-            if(result != null){
-                result.close();
+            if(resultado != null){
+                resultado.close();
             }
         }catch(Exception ex){
             throw ex;
@@ -46,7 +46,7 @@ public abstract class Dao {
             coneccion();
             stmt = conn.createStatement();
             stmt.executeUpdate(sql);
-            result = stmt.getResultSet();
+            resultado = stmt.getResultSet();
             
         } catch (SQLException | ClassNotFoundException ex) {
             throw ex;
@@ -58,7 +58,7 @@ public abstract class Dao {
         try {
             coneccion();
             stmt = conn.createStatement();
-            result = stmt.executeQuery(sql);
+            resultado = stmt.executeQuery(sql);
             
             /* Acordarse de cerrar la connecion */
         

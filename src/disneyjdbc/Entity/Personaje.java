@@ -10,13 +10,16 @@ public class Personaje {
     private String historia;
     private int codPelicula;
 
-    public Personaje(String imagen, String nombre, int edad, int peso, String historia, int codPelicula) {
+    public Personaje(int codigo ,String imagen, String nombre, int edad, int peso, String historia, int codPelicula) {
         this.imagen = imagen;
         this.nombre = nombre;
         this.edad = edad;
         this.peso = peso;
         this.historia = historia;
         this.codPelicula = codPelicula;
+    }
+    public Personaje(){
+        
     }
 
     public String getImagen() {
@@ -57,6 +60,14 @@ public class Personaje {
 
     public void setHistoria(String historia) {
         this.historia = historia;
+    }
+
+    public int getCodPelicula() {
+        return codPelicula;
+    }
+
+    public void setCodPelicula(int codPelicula) {
+        this.codPelicula = codPelicula;
     }
     
     
