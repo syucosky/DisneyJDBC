@@ -43,7 +43,7 @@ public class PersonajeDao extends Dao {
                 String sql = "UPDATE personaje SET " + columna + " = " + datoEdadPesoCodPeli +" WHERE nombre = '" + nombre + "';";
                 insertarModificarEliminar(sql);
             }else{
-                String sql = "UPDATE personaje SET '" + columna + "' = '" + nuevoDato +"' WHERE nombre = '" + nombre + "';";
+                String sql = "UPDATE personaje SET " + columna + " = '" + nuevoDato +"' WHERE nombre = '" + nombre + "';";
                 insertarModificarEliminar(sql);
             }
         } catch (Exception e) {

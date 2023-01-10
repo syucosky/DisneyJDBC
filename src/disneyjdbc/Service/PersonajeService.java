@@ -29,7 +29,7 @@ public class PersonajeService {
             throw e;
         }
     }
-    public void editarPersonaje(String nombre, String nuevoDato,String columna )throws Exception{
+    public Personaje editarPersonaje(String nombre, String nuevoDato,String columna )throws Exception{
         try {
             if(dao.buscarPersonajePorNombre(nombre).getNombre() == null){
                 throw new Exception("Personaje no encontrado");
@@ -38,7 +38,8 @@ public class PersonajeService {
             }    
         } catch (Exception e) {
             throw e;
-        }  
+        }
+        return dao.buscarPersonajePorNombre(nuevoDato);
     }
     public void eliminarPersonaje(String nombre)throws Exception{
         try {
