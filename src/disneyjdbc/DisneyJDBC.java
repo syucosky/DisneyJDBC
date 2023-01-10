@@ -21,9 +21,14 @@ public class DisneyJDBC {
 
         } catch (Exception e) {
             throw e;
-        }*/
+        }
         try {
             perService.editarPersonaje("SuperMan", "1", "cod_pelicula");
+        } catch (Exception e) {
+            throw e;
+        }*/
+        try {
+            perService.eliminarPersonaje("SuperMan");
         } catch (Exception e) {
             throw e;
         }

@@ -50,6 +50,14 @@ public class PersonajeDao extends Dao {
             throw e;
         }
     }
+    public void eliminarPersonaje(String nombre) throws Exception{
+        try {
+            String sql = "DELETE  FROM personaje WHERE nombre = '" + nombre +"';";
+            insertarModificarEliminar(sql);
+        } catch (Exception e) {
+            throw e;
+        }
+    }
     
     
 }

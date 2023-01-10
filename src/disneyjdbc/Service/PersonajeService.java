@@ -38,8 +38,16 @@ public class PersonajeService {
             }    
         } catch (Exception e) {
             throw e;
+        }  
+    }
+    public void eliminarPersonaje(String nombre)throws Exception{
+        try {
+            if(dao.buscarPersonajePorNombre(nombre).getNombre() == null){
+                throw new Exception("Personaje no encontrado");
+            }else{
+                dao.eliminarPersonaje(nombre);
+            }  
+        } catch (Exception e) {
         }
-    
-    
-    };
+    }
 }
