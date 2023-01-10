@@ -10,7 +10,7 @@ public class DisneyJDBC {
        PersonajeService perService = new PersonajeService();
        Personaje per = new Personaje();
        
-        try {
+       /* try {
             per.setImagen("spiderman.jpg");
             per.setNombre("SpiderMan");
             per.setEdad(20);
@@ -21,8 +21,14 @@ public class DisneyJDBC {
 
         } catch (Exception e) {
             throw e;
+        }*/
+        try {
+            perService.editarPersonaje("SuperMan", "1", "cod_pelicula");
+        } catch (Exception e) {
+            throw e;
         }
        
+        
     }
     
 }

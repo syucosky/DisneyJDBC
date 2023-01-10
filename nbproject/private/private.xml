@@ -3,9 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/syuco/OneDrive/Escritorio/DisneyJDBC/DisneyJDBC/src/disneyjdbc/Entity/Pelicula.java</file>
-            <file>file:/C:/Users/syuco/OneDrive/Escritorio/DisneyJDBC/DisneyJDBC/src/disneyjdbc/Entity/Genero.java</file>
+            <file>file:/C:/Users/syuco/OneDrive/Escritorio/DisneyJDBC/DisneyJDBC/src/disneyjdbc/Service/PersonajeService.java</file>
+            <file>file:/C:/Users/syuco/OneDrive/Escritorio/DisneyJDBC/DisneyJDBC/src/disneyjdbc/Persistence/Dao.java</file>
+            <file>file:/C:/Users/syuco/OneDrive/Escritorio/DisneyJDBC/DisneyJDBC/src/disneyjdbc/Persistence/PersonajeDao.java</file>
             <file>file:/C:/Users/syuco/OneDrive/Escritorio/DisneyJDBC/DisneyJDBC/src/disneyjdbc/Entity/Personaje.java</file>
+            <file>file:/C:/Users/syuco/OneDrive/Escritorio/DisneyJDBC/DisneyJDBC/src/disneyjdbc/DisneyJDBC.java</file>
         </group>
     </open-files>
 </project-private>
