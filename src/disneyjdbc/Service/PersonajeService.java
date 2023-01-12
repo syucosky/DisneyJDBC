@@ -11,6 +11,9 @@ public class PersonajeService {
     }
     public void crearPersonaje(Personaje personaje) throws Exception{
         try {
+           if (dao.buscarPersonajePorNombre(personaje.getNombre()).getNombre() != null){
+               throw new Exception("El nombre del personaje ya existe");
+           }
            if (personaje == null){
                throw new Exception("Debe indicar un personaje");
            }
@@ -49,6 +52,17 @@ public class PersonajeService {
                 dao.eliminarPersonaje(nombre);
             }  
         } catch (Exception e) {
+        }
+    }
+    public Personaje detallePersonaje(String nombre)throws Exception{
+        try {
+            if(dao.buscarPersonajePorNombre(nombre).getNombre() == null){
+                throw new Exception("Personaje no encontrado");
+            }else{
+                return dao.buscarPersonajePorNombre(nombre);
+            }    
+        }catch (Exception e) {
+            throw e;
         }
     }
 }
