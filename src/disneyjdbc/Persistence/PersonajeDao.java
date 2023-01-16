@@ -1,6 +1,8 @@
 package disneyjdbc.Persistence;
 
 import disneyjdbc.Entity.Personaje;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PersonajeDao extends Dao {
     
@@ -52,12 +54,50 @@ public class PersonajeDao extends Dao {
     }
     public void eliminarPersonaje(String nombre) throws Exception{
         try {
-            String sql = "DELETE  FROM personaje WHERE nombre = '" + nombre +"';";
+            String sql = "DELETE FROM personaje WHERE nombre = '" + nombre +"';";
             insertarModificarEliminar(sql);
         } catch (Exception e) {
             throw e;
         }
     }
-    
-    
+    public List<Personaje> busquedaPorFiltro(String nombre, String nuevoDato, String columna)throws Exception{
+        try {
+            if(columna == null){
+                String sql = "SELECT * FROM personaje";
+                consultar(sql);
+            }
+            if(columna.equals("peso")){
+                int datoEdadPesoCodPeli = Integer.parseInt(nuevoDato);
+                String sql = "SELECT * FROM personaje WHERE nombre = '"+ nombre +"' AND peso = '"+ datoEdadPesoCodPeli +"';";
+                consultar(sql);
+            }
+            if(columna.equals("edad")){
+                int datoEdadPesoCodPeli = Integer.parseInt(nuevoDato);
+                String sql = "SELECT * FROM personaje WHERE nombre = '"+ nombre +"' AND edad = '"+ datoEdadPesoCodPeli +"';";
+                consultar(sql);
+            }
+            if(columna.equals("cod_pelicula")){
+                int datoEdadPesoCodPeli = Integer.parseInt(nuevoDato);
+                String sql = "SELECT * FROM personaje WHERE nombre = '"+ nombre +"' AND cod_pelicula = '"+ datoEdadPesoCodPeli +"';";
+                consultar(sql);
+            }
+            List<Personaje> persList = new ArrayList();
+            Personaje pers = new Personaje();
+            while(resultado.next()){
+                pers.setId(resultado.getInt("idPersonaje"));
+                pers.setImagen(resultado.getString("imagen"));
+                pers.setNombre(resultado.getString("nombre"));
+                pers.setEdad(resultado.getInt("edad"));
+                pers.setPeso(resultado.getInt("peso"));
+                pers.setHistoria(resultado.getString("historia"));
+                pers.setCodPelicula(resultado.getInt("cod_pelicula"));
+                persList.add(pers);
+            }
+            desconeccion();
+            return persList;
+        } catch (Exception e) {
+            desconeccion();
+            throw e;
+        }
+    }  
 }

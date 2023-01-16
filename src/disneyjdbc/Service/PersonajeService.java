@@ -2,6 +2,8 @@ package disneyjdbc.Service;
 
 import disneyjdbc.Entity.Personaje;
 import disneyjdbc.Persistence.PersonajeDao;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PersonajeService {
     private PersonajeDao dao;
@@ -11,7 +13,7 @@ public class PersonajeService {
     }
     public void crearPersonaje(Personaje personaje) throws Exception{
         try {
-           if (dao.buscarPersonajePorNombre(personaje.getNombre()).getNombre() != null){
+           if (dao.buscarPersonajePorNombre(personaje.getNombre()) != null){
                throw new Exception("El nombre del personaje ya existe");
            }
            if (personaje == null){
@@ -62,6 +64,17 @@ public class PersonajeService {
                 return dao.buscarPersonajePorNombre(nombre);
             }    
         }catch (Exception e) {
+            throw e;
+        }
+    }
+    public List<Personaje> busquedaPorFiltro(String nombre, String nuevoDato,String columna )throws Exception{
+        try {
+            if(dao.buscarPersonajePorNombre(nombre).getNombre() == null){
+                throw new Exception("Personaje no encontrado");
+            }else{
+                return dao.busquedaPorFiltro(nombre, nuevoDato, columna);
+            }   
+        } catch (Exception e) {
             throw e;
         }
     }

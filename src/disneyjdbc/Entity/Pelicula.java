@@ -10,12 +10,15 @@ public class Pelicula {
     private int calificacion;
     private int codGenero;
 
-    public Pelicula(String imagen, String titulo, String fecha, int calificacion, int codGenero) {
+    public Pelicula(int codigo, String imagen, String titulo, String fecha, int calificacion, int codGenero) {
         this.imagen = imagen;
         this.titulo = titulo;
         this.fecha = fecha;
         this.calificacion = calificacion;
         this.codGenero = codGenero;
+    }
+    public Pelicula(){
+        
     }
 
     public String getImagen() {
@@ -50,6 +53,15 @@ public class Pelicula {
         this.calificacion = calificacion;
     }
 
+    public int getCodGenero() {
+        return codGenero;
+    }
+
+    public void setCodGenero(int codGenero) {
+        this.codGenero = codGenero;
+    }
+
+    
     
     
     

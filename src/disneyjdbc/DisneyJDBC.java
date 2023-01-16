@@ -2,15 +2,21 @@
 package disneyjdbc;
 
 import disneyjdbc.Entity.Genero;
+import disneyjdbc.Entity.Pelicula;
 import disneyjdbc.Entity.Personaje;
 import disneyjdbc.Service.GeneroService;
+import disneyjdbc.Service.PeliculaService;
 import disneyjdbc.Service.PersonajeService;
 
 public class DisneyJDBC {
 
     public static void main(String[] args) throws Exception {
+        
        PersonajeService perService = new PersonajeService();
        GeneroService genService = new GeneroService();
+       PeliculaService peliService = new PeliculaService();
+       
+       Pelicula peli = new Pelicula();
        Genero gen = new Genero(); 
        Personaje per = new Personaje();
        
@@ -35,14 +41,23 @@ public class DisneyJDBC {
             perService.eliminarPersonaje("SuperMan");
         } catch (Exception e) {
             throw e;
-        }*/
+        }
         try {
             gen.setNombre("Aventuras");
             genService.crearGenero(gen);
         } catch (Exception e) {
             throw e;
+        }*/
+        try {
+            peli.setImagen("FlorPeli");
+            peli.setTitulo("Flor films");
+            peli.setFecha("1022023");
+            peli.setCalificacion(10);
+            peli.setCodGenero(5);
+            peliService.crearPelicula(peli);
+        } catch (Exception e) {
+            throw e;
         }
-       
         
     }
     
