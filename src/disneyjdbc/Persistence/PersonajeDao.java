@@ -99,5 +99,13 @@ public class PersonajeDao extends Dao {
             desconeccion();
             throw e;
         }
-    }  
+    }
+        public void eliminarPelicula(String nombre) throws Exception{
+            try {
+                String sql = "UPDATE cod_pelicula FROM personaje WHERE nombre = '" + nombre +"'";
+                insertarModificarEliminar(sql);
+            } catch (Exception e) {
+                throw e;
+            }
+        }
 }

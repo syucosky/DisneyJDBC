@@ -69,7 +69,7 @@ public class DisneyJDBC {
             peliService.editarPelicula("Flor films", "1991", "fecha");
         } catch (Exception e) {
             throw e;
-        }*/
+        }
         try {
             List<Pelicula> pruebaPeli = new ArrayList();
             pruebaPeli = peliService.buscarConFiltro("flor films", "ascendente", "5");
@@ -77,6 +77,11 @@ public class DisneyJDBC {
                 System.out.println(p.getTitulo());
                 System.out.println(p.getFecha());
             }
+        } catch (Exception e) {
+            throw e;
+        }*/
+        try {
+            perService.eliminarPersonaje("SpiderMan");
         } catch (Exception e) {
             throw e;
         }
