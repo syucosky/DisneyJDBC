@@ -66,17 +66,17 @@ public class PeliculaDao extends Dao{
             }
             if (ascODesc.equals("ascendente")){
                 int generoParseado = Integer.parseInt(genero);
-                String sql = "SELECT * FROM pelicula WHERE titulo = '"+ titulo +"' AND cod_genero = " + generoParseado + "ORDER BY fecha ASC;";
+                String sql = "SELECT * FROM pelicula WHERE titulo = '"+ titulo +"' AND cod_genero = '" + generoParseado + "' ORDER BY fecha ASC;";
                 consultar(sql);
             }
             if(ascODesc.equals("descendente")){
                 int generoParseado = Integer.parseInt(genero);
-                String sql = "SELECT * FROM pelicula WHERE titulo = '"+ titulo +"' AND cod_genero = " + generoParseado + "ORDER BY fecha DESC;";
+                String sql = "SELECT * FROM pelicula WHERE titulo = '"+ titulo +"' AND cod_genero = '" + generoParseado + "' ORDER BY fecha DESC;";
                 consultar(sql);
             }
             if(ascODesc.isEmpty()){
                 int generoParseado = Integer.parseInt(genero);
-                String sql = "SELECT * FROM pelicula WHERE titulo = '"+ titulo +"' AND cod_genero = " + generoParseado + ";";    
+                String sql = "SELECT * FROM pelicula WHERE titulo = '"+ titulo +"' AND cod_genero = '" + generoParseado + "';";    
                 consultar(sql);
             }
             if(genero.isEmpty() && ascODesc.equals("ascendente")){
@@ -88,7 +88,6 @@ public class PeliculaDao extends Dao{
                 consultar(sql);
             }
             if(ascODesc.isEmpty() && genero.isEmpty()){
-                int generoParseado = Integer.parseInt(genero);
                 String sql = "SELECT * FROM pelicula WHERE titulo = '"+ titulo +";";
                 consultar(sql);
             }
