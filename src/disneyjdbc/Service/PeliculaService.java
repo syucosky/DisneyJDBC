@@ -2,6 +2,7 @@ package disneyjdbc.Service;
 
 import disneyjdbc.Entity.Pelicula;
 import disneyjdbc.Persistence.PeliculaDao;
+import java.util.List;
 
 
 public class PeliculaService {
@@ -31,7 +32,7 @@ public class PeliculaService {
     }
     public void eliminarPelicula(String titulo) throws Exception{
         try {
-            if(dao.buscarPeliPorTitulo(titulo) == null){
+            if(dao.buscarPeliPorTitulo(titulo).getTitulo() == null){
                 throw new Exception("Pelicula no encontrada");
             }else{
                 dao.eliminarPelicula(titulo);
@@ -40,4 +41,11 @@ public class PeliculaService {
             throw e;
         }
     }
+    public List<Pelicula> buscarConFiltro(String titulo, String ascODesc, String genero) throws Exception{
+        try {
+            return dao.buscarConFiltro(titulo, ascODesc, genero);
+        } catch (Exception e) {
+            throw e;
+        }                        
+    }    
 }

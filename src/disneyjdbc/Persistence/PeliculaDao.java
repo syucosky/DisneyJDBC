@@ -1,6 +1,8 @@
 package disneyjdbc.Persistence;
 
 import disneyjdbc.Entity.Pelicula;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PeliculaDao extends Dao{
     
@@ -40,7 +42,7 @@ public class PeliculaDao extends Dao{
                 String sql = "UPDATE pelicula SET '" + columna + "' = " + nuevoDatoParseado + "WHERE titulo = '" + titulo +"'";
                 insertarModificarEliminar(sql);
             }else{
-                String sql = "UPDATE pelicula SET '" + columna + "' = '" + nuevoDato + "' WHERE titulo = '" + titulo +"'";           
+                String sql = "UPDATE pelicula SET " + columna + " = '" + nuevoDato + "' WHERE titulo = '" + titulo +"'";           
                 insertarModificarEliminar(sql);
             }
         } catch (Exception e) {
@@ -56,6 +58,56 @@ public class PeliculaDao extends Dao{
             throw e;
         }
     }
-    
+    public List<Pelicula> buscarConFiltro(String titulo, String ascODesc, String genero) throws Exception{
+        try {
+            if (titulo.isEmpty() && ascODesc.isEmpty() && genero.isEmpty()){
+                String sql = "SELECT * FROM pelicula";
+                consultar(sql);
+            }
+            if (ascODesc.equals("ascendente")){
+                int generoParseado = Integer.parseInt(genero);
+                String sql = "SELECT * FROM pelicula WHERE titulo = '"+ titulo +"' AND cod_genero = " + generoParseado + "ORDER BY fecha ASC;";
+                consultar(sql);
+            }
+            if(ascODesc.equals("descendente")){
+                int generoParseado = Integer.parseInt(genero);
+                String sql = "SELECT * FROM pelicula WHERE titulo = '"+ titulo +"' AND cod_genero = " + generoParseado + "ORDER BY fecha DESC;";
+                consultar(sql);
+            }
+            if(ascODesc.isEmpty()){
+                int generoParseado = Integer.parseInt(genero);
+                String sql = "SELECT * FROM pelicula WHERE titulo = '"+ titulo +"' AND cod_genero = " + generoParseado + ";";    
+                consultar(sql);
+            }
+            if(genero.isEmpty() && ascODesc.equals("ascendente")){
+                String sql = "SELECT * FROM pelicula WHERE titulo = '" + titulo + "' ORDER BY fecha ASC";
+                consultar(sql);
+            }
+            if(genero.isEmpty() && ascODesc.equals("descendente")){
+                String sql = "SELECT * FROM pelicula WHERE titulo = '" + titulo + "' ORDER BY fecha DES";
+                consultar(sql);
+            }
+            if(ascODesc.isEmpty() && genero.isEmpty()){
+                int generoParseado = Integer.parseInt(genero);
+                String sql = "SELECT * FROM pelicula WHERE titulo = '"+ titulo +";";
+                consultar(sql);
+            }
+            List<Pelicula> listaRetorno = new ArrayList();
+            Pelicula peliRetorno = new Pelicula();
+            while(resultado.next()){
+                peliRetorno.setImagen(resultado.getString("imagen"));
+                peliRetorno.setTitulo(resultado.getString("titulo"));
+                peliRetorno.setFecha(resultado.getString("fecha"));
+                peliRetorno.setCalificacion(resultado.getInt("calificacion"));
+                peliRetorno.setCodGenero(resultado.getInt("cod_genero"));
+                listaRetorno.add(peliRetorno);
+            }
+            desconeccion();
+            return listaRetorno;
+        } catch (Exception e) {
+            desconeccion();
+            throw e;
+        }
+    }
     
 }

@@ -62,7 +62,7 @@ public class PersonajeDao extends Dao {
     }
     public List<Personaje> busquedaPorFiltro(String nombre, String nuevoDato, String columna)throws Exception{
         try {
-            if(columna == null){
+            if(nombre.isEmpty() && nuevoDato.isEmpty() && columna.isEmpty()){
                 String sql = "SELECT * FROM personaje";
                 consultar(sql);
             }

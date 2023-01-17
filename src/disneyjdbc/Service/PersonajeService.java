@@ -68,12 +68,8 @@ public class PersonajeService {
         }
     }
     public List<Personaje> busquedaPorFiltro(String nombre, String nuevoDato,String columna )throws Exception{
-        try {
-            if(dao.buscarPersonajePorNombre(nombre).getNombre() == null){
-                throw new Exception("Personaje no encontrado");
-            }else{
-                return dao.busquedaPorFiltro(nombre, nuevoDato, columna);
-            }   
+        try {        
+            return dao.busquedaPorFiltro(nombre, nuevoDato, columna);
         } catch (Exception e) {
             throw e;
         }

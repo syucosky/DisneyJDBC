@@ -7,6 +7,8 @@ import disneyjdbc.Entity.Personaje;
 import disneyjdbc.Service.GeneroService;
 import disneyjdbc.Service.PeliculaService;
 import disneyjdbc.Service.PersonajeService;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DisneyJDBC {
 
@@ -47,7 +49,7 @@ public class DisneyJDBC {
             genService.crearGenero(gen);
         } catch (Exception e) {
             throw e;
-        }*/
+        }
         try {
             peli.setImagen("FlorPeli");
             peli.setTitulo("Flor films");
@@ -57,7 +59,28 @@ public class DisneyJDBC {
             peliService.crearPelicula(peli);
         } catch (Exception e) {
             throw e;
+        }       
+        try {
+            peliService.eliminarPelicula("Seba films");
+        } catch (Exception e) {
+            throw e;
         }
+       try {
+            peliService.editarPelicula("Flor films", "1991", "fecha");
+        } catch (Exception e) {
+            throw e;
+        }*/
+        try {
+            List<Pelicula> pruebaPeli = new ArrayList();
+            pruebaPeli = peliService.buscarConFiltro("flor films", "ascendente", "5");
+            for(Pelicula p : pruebaPeli) {
+                System.out.println(p.getTitulo());
+                System.out.println(p.getFecha());
+            }
+        } catch (Exception e) {
+            throw e;
+        }
+                
         
     }
     
